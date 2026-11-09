@@ -1,0 +1,6 @@
+{
+  "name": "NeoNotion",
+  "description": "Connected Business Operating System and Modular Workspace with Guaranteed Data Sovereignty by Pourya Omidian.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
