@@ -1,0 +1,91 @@
+html.neolock-active,
+body.neolock-active {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.neolock-img-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+    z-index: 0;
+}
+
+.neolock-img-wrap img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
+}
+
+.neolock-img-shield {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.001);
+    pointer-events: auto;
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+}
+
+.neolock-watermark {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999998;
+    overflow: hidden;
+    background-repeat: repeat;
+    background-position: 0 0;
+}
+
+.neolock-shield {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    background: #000000;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 120ms linear, visibility 120ms linear;
+    display: grid;
+    place-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.neolock-shield.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.neolock-shield::before {
+    content: attr(data-neolock-msg);
+    display: grid;
+    place-items: center;
+    max-width: 780px;
+    line-height: 1.8;
+    letter-spacing: 0.14em;
+    color: #33ff77;
+    font-family: "Courier New", monospace;
+    font-weight: 700;
+    font-size: clamp(16px, 2.2vw, 26px);
+    border: 2px solid rgba(51, 255, 119, 0.45);
+    padding: 40px 50px;
+    border-radius: 12px;
+    background:
+        linear-gradient(180deg, rgba(10, 18, 12, 0.96), rgba(0, 0, 0, 1)),
+        repeating-linear-gradient(0deg, rgba(51, 255, 119, 0.04) 0, rgba(51, 255, 119, 0.04) 1px, transparent 1px, transparent 24px);
+    white-space: pre-wrap;
+}
+
+@media print {
+    html.neolock-active #neolock-print-warning {
+        display: grid !important;
+        visibility: visible !important;
+    }
+}
