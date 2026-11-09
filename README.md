@@ -1,157 +1,114 @@
-# NeoNotion (Neo OS)
+# NeoNotion WordPress Plugins Ecosystem
 
-> **A Connected Business Operating System & Modular Workspace Architecture for Modern Enterprises and Cross-Border SMBs.**  
-> Founded & Architected by **[Pourya Omidian](https://neonotion.net)** · [NeoNotion.net](https://neonotion.net)
+> **Official Suite of High-Performance WordPress Plugins for E-Commerce, UX, Bookings, Forms & Security.**  
+> Developed & Maintained by **[Pourya Omidian](https://neonotion.net)** · [NeoNotion.net](https://neonotion.net)
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x%20%7C%207.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Data Sovereignty](https://img.shields.io/badge/Data_Sovereignty-100%25_Guaranteed-success)](https://neonotion.net)
+[![License: GPL-2.0-or-later](https://img.shields.io/badge/License-GPL--2.0--or--later-blue.svg)](LICENSE)
+[![WordPress](https://img.shields.io/badge/WordPress-5.9%2B%20%7C%206.x-21759B?logo=wordpress&logoColor=white)](https://wordpress.org/)
+[![PHP](https://img.shields.io/badge/PHP-7.4%20%7C%208.x-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![Hub Framework](https://img.shields.io/badge/Hub_Portal-React_19_|_Tailwind_v4-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Author](https://img.shields.io/badge/Author-Pourya_Omidian-orange)](mailto:itispourya@gmail.com)
 
 ---
 
-## 🌐 Overview
+## 🌟 The Plugin Suite Overview
 
-**NeoNotion** (`neonotion.net`) is an open, modular business operating system designed to eradicate departmental data silos and provide organizations with sovereign, high-velocity operational workflows.
+This repository contains the official, production-ready WordPress plugin suite for the **NeoNotion** platform, engineered by **Pourya Omidian**. Each plugin operates autonomously while integrating seamlessly under a single, unified WordPress administrative menu (`dashicons-superhero-alt`).
 
-Traditional SaaS ecosystems fragment company intelligence across disconnected CRMs, ERP tools, financial spreadsheets, and task managers. NeoNotion brings these workflows into a single cohesive, high-performance web interface while guaranteeing **100% client data sovereignty**.
-
----
-
-## ⚡ Core Principles & Architecture
-
-### 1. 🛡️ Absolute Data Sovereignty
-- **1-Click Raw Export**: Organizations retain complete ownership of their data with instant export capabilities to JSON, SQL, and CSV.
-- **Zero Public AI Training**: Client financial ledgers, trade secrets, and customer data are never monetized, leaked, or used to train public language models.
-- **Multi-Region Deployment**: Engineered for compliant distributed deployment across EU (Frankfurt), UK (London), UAE, and Bahrain data hubs.
-
-### 2. 🧩 Unified Modular Workflow
-- **Connected Workspace**: Integrates customer relationship management (CRM), inventory tracking, multi-currency invoicing, and project lifecycles.
-- **Reactive State Management**: Real-time optimistic UI updates with zero perceptible latency.
-- **Accessible & Responsive**: Built following modern WCAG AA accessibility standards, responsive grid layouts, and keyboard-first navigation.
-
-### 3. ⚙️ Modern Technology Stack
-- **Frontend Framework**: React 19 with strict TypeScript
-- **Styling Engine**: Tailwind CSS v4 via `@tailwindcss/vite`
-- **Build System**: Vite 8 for blazing-fast HMR and optimized production bundles
-- **Iconography & Motion**: Lucide React and Motion
-- **Backend & Proxy Support**: Express 4 with TypeScript execution (`tsx`)
-- **AI Integration Support**: Server-side `@google/genai` proxy architecture with strict API key encapsulation
+| Plugin | Version | Category | Description | Ready-to-Install ZIP |
+|---|---|---|---|---|
+| **NeoMarket** | `2.0.0` | E-Commerce | Enterprise-grade store with online gateways (Zarinpal, PayPing, Mellat), Card-to-Card receipt upload, Crypto (TRC20/ERC20), AJAX cart, wishlist, and compare. | [Download ZIP](public/downloads/neomarket.zip) (74 KB) |
+| **NeoLoadLand** | `7.0` | UX / Preloader | Modern loading screen manager with animated SVG/CSS spinners, custom brand splash screens, and smooth exit transitions. | [Download ZIP](public/downloads/neoloadland.zip) (8.3 KB) |
+| **NeoBooking** | `9.0` | Appointments | Online appointment booking system with dedicated database tables, interactive time-slot selector, and automated workflow. | [Download ZIP](public/downloads/neobooking.zip) (12 KB) |
+| **NeoFormData** | `8.0` | Forms & Leads | Dynamic form builder with custom relational database tables, anti-spam validation, and 1-click CSV/Excel export. | [Download ZIP](public/downloads/neoformdata.zip) (9.7 KB) |
+| **NeoLock** | `6.0` | Security | Content protection suite: disables context menu (right-click), text selection, image dragging, and browser inspector shortcuts. | [Download ZIP](public/downloads/neolock.zip) (17 KB) |
+| **Complete Bundle** | `v2.0` | All-in-One | All 5 plugins packaged together for multi-site deployments or full-suite setup. | [Download Bundle ZIP](public/downloads/neonotion-plugins-bundle.zip) (120 KB) |
 
 ---
 
-## 🚀 Quick Start
+## 📦 Detailed Architecture by Plugin
 
-### Prerequisites
-- **Node.js**: `v18.0.0` or higher (Node 20+ recommended)
-- **Package Manager**: `npm`, `pnpm`, or `bun`
+### 1. 🛒 NeoMarket (v2.0.0)
+The complete e-commerce engine designed for high throughput and zero vendor lock-in:
+- **`neomarket.php`**: Plugin kernel, singleton instance, dependency loader, admin menu bootstrap, and developer credits.
+- **`includes/payments/`**:
+  - `abstract-neomarket-gateway.php`: Uniform abstract base class enforcing `process_payment()`, `handle_callback()`, and gateway settings.
+  - `gateway-zarinpal.php`: Zarinpal gateway integration with merchant ID and callback verification.
+  - `gateway-payping.php`: PayPing gateway integration with token generation and status checks.
+  - `gateway-mellat.php`: Bank Mellat (Behpardakht) direct processing for debit/credit cards.
+  - `gateway-card-to-card.php`: Manual Card-to-Card payment with receipt image upload and tracking code input.
+  - `gateway-crypto.php`: Cryptocurrency payments supporting TRC20 (USDT), ERC20, and QR code wallet presentation.
+- **`includes/class-neomarket-migrator.php`**: Schema migration engine executing automatic table upgrades.
+- **`includes/class-neomarket-db.php`**: Database abstraction layer utilizing `$wpdb->prepare()` for SQL-injection immunity.
+- **`includes/class-neomarket-cart.php`**: Persistent cart supporting guest cookies (30-day lifecycle) and user synchronization.
+- **`includes/class-neomarket-order.php`**: Custom order lifecycle engine (`neo_order` post type, status flows).
+- **`includes/class-neomarket-rest.php`**: Headless REST API under `/neomarket/v1` namespace.
+- **`includes/cross-plugin-sync.php`**: Connects product inventory with NeoBooking slots and pipes leads into NeoFormData.
+- **`public/shortcode-engine.php`**: Handlers for `[neomarket]`, `[neomarket_cart]`, `[neomarket_checkout]`, `[neomarket_wishlist]`, `[neomarket_compare]`, and `[neomarket_my_account]`.
 
-### Installation
+### 2. ⚡ NeoLoadLand (v7.0)
+- **`neoloadland.php`**: Admin configuration panel, splash screen markup generator, and conditional enqueue logic.
+- **`assets/js/neoloadland.js`**: Client-side window onload event handlers and smooth fade-out CSS transitions.
+- **`assets/css/`**: High-performance CSS keyframe spinners, pulse animations, and theme overlays.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/itispourya/neonotion.git
-   cd neonotion
-   ```
+### 3. 📅 NeoBooking (v9.0)
+- **`neobooking.php`**: Core booking engine with custom table `{$wpdb->prefix}neobooking_entries`.
+- **`assets/js/neobooking.js`**: Interactive client-side date-picker and AJAX slot reservation.
+- **Shortcode**: `[neobooking]` renders public reservation calendar.
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+### 4. 📝 NeoFormData (v8.0)
+- **`neoformdata.php`**: Dynamic form engine with custom tables `{$wpdb->prefix}neoformdata_forms` and `{$wpdb->prefix}neoformdata_entries`.
+- **`assets/js/neoformdata.js`**: Dynamic form builder, live input validator, and submission processor.
+- **Shortcode**: `[neoformdata id="1"]` embeds any generated form.
 
-3. **Configure environment variables:**
-   ```bash
-   cp .env.example .env
-   ```
-   Edit `.env` to supply any required configuration keys:
-   ```env
-   # GEMINI_API_KEY: Optional server-side AI processing
-   GEMINI_API_KEY="your_api_key_here"
-
-   # APP_URL: Base host URL for deployment
-   APP_URL="http://localhost:3000"
-   ```
-
-4. **Launch development server:**
-   ```bash
-   npm run dev
-   ```
-   Open your browser at `http://localhost:3000`.
-
-5. **Build for production:**
-   ```bash
-   npm run build
-   ```
-
-6. **Type check & lint:**
-   ```bash
-   npm run lint
-   ```
+### 5. 🛡️ NeoLock (v6.0)
+- **`neolock.php`**: Content protection coordinator with per-page overrides and admin toggle panel.
+- **`assets/js/neolock.js`**: High-speed DOM interception for `contextmenu`, `copy`, `cut`, `dragstart`, `keydown` (F12, Ctrl+U, PrintScreen, Ctrl+Shift+I).
 
 ---
 
-## 📁 Repository Structure
+## 🚀 How to Install in WordPress
 
-```text
-neonotion/
-├── .github/
-│   ├── workflows/
-│   │   └── ci.yml             # Continuous integration (lint & build checks)
-│   └── ISSUE_TEMPLATE/        # Standard bug & feature request templates
-├── src/
-│   ├── App.tsx                # NeoNotion core application entrypoint & dashboard
-│   ├── main.tsx               # DOM root mount
-│   └── index.css              # Global styles & Tailwind CSS v4 setup
-├── index.html                 # HTML shell with OpenGraph and SEO metadata
-├── metadata.json              # Project configuration and capabilities manifest
-├── package.json               # Package manifests and npm scripts
-├── tsconfig.json              # TypeScript strict configuration
-├── vite.config.ts             # Vite build and Tailwind integration
-├── LICENSE                    # Apache 2.0 Open Source License
-├── CONTRIBUTING.md            # Guidelines for open-source contributors
-├── CODE_OF_CONDUCT.md         # Community standards & Contributor Covenant
-├── SECURITY.md                # Vulnerability disclosure & security policies
-└── README.md                  # Project documentation (this file)
+### Method 1: WordPress Dashboard Upload (Recommended)
+1. Download the desired plugin `.zip` file from the table above or via the interactive web hub.
+2. In your WordPress Admin Dashboard, navigate to **Plugins** → **Add New** → **Upload Plugin**.
+3. Choose the downloaded `.zip` file and click **Install Now**.
+4. Click **Activate Plugin**.
+5. Access the unified **NeoNotion** menu in the WordPress sidebar.
+
+### Method 2: Manual FTP / SSH Installation
+1. Extract the plugin folder (e.g., `NeoMarket`).
+2. Upload the extracted folder to `/wp-content/plugins/` on your server.
+3. Go to **Plugins → Installed Plugins** in the WordPress Dashboard and click **Activate**.
+
+### Method 3: WP-CLI
+```bash
+wp plugin install /path/to/neomarket.zip --activate
 ```
 
 ---
 
-## 👥 Author & Leadership
+## 💻 Running the Local Interactive Hub
 
-- **Founder & Lead Architect**: [Pourya Omidian](mailto:itispourya@gmail.com)
-- **Organization**: Neos Technologies Inc. / [NeoNotion.net](https://neonotion.net)
+The repository includes a modern React 19 + Tailwind CSS v4 distribution hub for browsing file contents, viewing code in real time, and downloading assets:
+
+```bash
+# Clone the repository
+git clone https://github.com/itispourya/neonotion.git
+cd neonotion
+
+# Install dependencies
+npm install
+
+# Run the distribution hub
+npm run dev
+```
+
+---
+
+## 👥 Author & Copyright
+
+- **Author & Lead Architect**: [Pourya Omidian](mailto:itispourya@gmail.com)
+- **Website**: [NeoNotion.net](https://neonotion.net)
 - **Email**: [itispourya@gmail.com](mailto:itispourya@gmail.com)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from the open-source community! Whether fixing bugs, improving documentation, or proposing new modular capabilities, please check [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
-
-Copyright (c) 2024-2026 Pourya Omidian / Neos Technologies Inc. / NeoNotion.net.
-
----
-
-## 🇮🇷 راهنمای فارسی (Persian Summary)
-
-**نئو‌نوشن (NeoNotion.net)** یک سیستم عامل جامع ابری و پلتفرم یکپارچه برای کسب‌وکارهای مدرن و سازمان‌های بین‌المللی است که توسط **پوریا امیدیان (Pourya Omidian)** معماری و توسعه داده شده است.
-
-### ویژگی‌های کلیدی:
-- **حاکمیت کامل داده‌ها (Data Sovereignty)**: امکان خروجی گرفتن فوری (JSON، SQL، CSV) با یک کلیک بدون وابستگی به ارائه‌دهنده (Zero Vendor Lock-in).
-- **حفظ ۱۰۰٪ حریم خصوصی**: داده‌ها و دفاتر مالی کاربران هرگز فروخته نشده و برای آموزش مدل‌های عمومی هوش مصنوعی استفاده نمی‌شوند.
-- **یکپارچه‌سازی ماژولار**: پیوند یکپارچه میان ارتباط با مشتریان (CRM)، مدیریت زنجیره و انبارداری (ERP)، صدور صورتحساب و هوش تجاری.
-- **آماده‌سازی برای گیت‌هاب**: این مخزن دارای فایل‌های استاندارد متن‌باز شامل مجوز Apache 2.0، راهنمای مشارکت (CONTRIBUTING)، تست‌های خودکار CI و تمپلیت‌های ایشو است.
+- **License**: [GPL-2.0-or-later](LICENSE) / Apache 2.0

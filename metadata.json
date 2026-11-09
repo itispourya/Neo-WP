@@ -1,0 +1,6 @@
+{
+  "name": "NeoNotion",
+  "description": "NeoNotion WordPress Plugins Ecosystem & Distribution Hub for NeoMarket, NeoLoadLand, NeoBooking, NeoFormData, and NeoLock by Pourya Omidian.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
